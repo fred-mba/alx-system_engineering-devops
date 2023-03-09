@@ -1,4 +1,4 @@
-## Shell Permission Notes
+## Notes on Shell Permissions
 
 0-iam_betty: su betty ==> switches the current user to the user (betty).
 
@@ -32,4 +32,5 @@
 
 101-symbolic_link_permissions: chown -h vincent:staff changes the owner and the group owner of _hello to vincent and staff. The -h affect symbolic links instead of any referenced file.
 
-102-if_only: chown --from=guillaume:betty hello ==> changes the owner of the file hello to betty only if it is owned by the user guillaume.
+102-if_only: chown --from=guillaume betty hello ==> changes the owner of the file hello to betty only if it is owned by the user guillaume.
+
