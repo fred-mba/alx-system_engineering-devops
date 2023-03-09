@@ -22,6 +22,6 @@
 
 11-directories_permissions: chmod -R +X . ==> adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users.
 
-12-directory_permissions: mkdir -d 751 my_dir ==> creates a directory (my_dir) with permissions 751 in the working directory. The flag -d means parameter (751) to my_dir.
+12-directory_permissions: mkdir -m 751 my_dir ==> creates a directory (my_dir) with permissions 751 in the working directory. The flag -m means set file mode as in chmod.
 
 
