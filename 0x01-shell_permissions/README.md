@@ -34,4 +34,4 @@
 
 102-if_only: chown --from=guillaume betty hello ==> changes the owner of the file hello to betty only if it is owned by the user guillaume.
 
-103-Star_Wars: Access Star Wars by typing towel.blinkenlights.nl
+103-Star_Wars: Access Star Wars by first typing telnet, hit enter. Type towel.blinkenlights.nl
