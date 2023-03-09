@@ -24,4 +24,4 @@
 
 12-directory_permissions: mkdir -m 751 my_dir ==> creates a directory (my_dir) with permissions 751 in the working directory. The flag -m means set file mode as in chmod.
 
-
+13-change_group: chgrp school hello ==> changes the group owner to (school) for the file (hello).
