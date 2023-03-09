@@ -9,3 +9,5 @@
 4-empty: touch hello ==> creates an empty file called (hello).
 
 5-execute: chmod u+x hello ==> adds execute permission to the owner of the file (hello).
+
+6-multiple_permissions: ug+x,o+r hello adds execute permission to the owner and the group owner, and read permission to other users, to the file(hello).
