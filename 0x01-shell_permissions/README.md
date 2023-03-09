@@ -14,4 +14,6 @@
 
 7-everybody: chmod ugo+x hello ==> adds execution permission to the owner, the group owner and the other users, to the file hello.
 
-8-James_Bond: chomd 007 hello ==> sets NO permissions to the owner, NO permissions to the group, and all the permisions the world. 
+8-James_Bond: chomd 007 hello ==> sets NO permissions to the owner, NO permissions to the group, and all the permisions the world.
+
+9-John_Doe: chomd 753 hello ==> sets the mode of the file hello to this format [-rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello]. 
