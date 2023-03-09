@@ -1,4 +1,4 @@
-# Shell Permission Notes
+## Shell Permission Notes
 
 0-iam_betty: su betty ==> switches the current user to the user (betty).
 
@@ -29,3 +29,5 @@
 13-change_group: chgrp school hello ==> changes the group owner to (school) for the file (hello).
 
 100-change_owner_and_group: chmod vincent:staff * ==> changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
+
+101-symbolic_link_permissions: chown -h vincent:staff changes the owner and the group owner of _hello to vincent and staff. The -h affect symbolic links instead of any referenced file.
