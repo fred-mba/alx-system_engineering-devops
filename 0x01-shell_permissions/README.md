@@ -31,3 +31,5 @@
 100-change_owner_and_group: chmod vincent:staff * ==> changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
 
 101-symbolic_link_permissions: chown -h vincent:staff changes the owner and the group owner of _hello to vincent and staff. The -h affect symbolic links instead of any referenced file.
+
+102-if_only: chown --from=guillaume:betty hello ==> changes the owner of the file hello to betty only if it is owned by the user guillaume.
