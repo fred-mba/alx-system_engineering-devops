@@ -13,3 +13,5 @@
 6-multiple_permissions: ug+x,o+r hello ==> adds execute permission to the owner and the group owner, and read permission to other users, to the file(hello).
 
 7-everybody: chmod ugo+x hello ==> adds execution permission to the owner, the group owner and the other users, to the file hello.
+
+8-James_Bond: chomd 007 hello ==> sets NO permissions to the owner, NO permissions to the group, and all the permisions the world. 
