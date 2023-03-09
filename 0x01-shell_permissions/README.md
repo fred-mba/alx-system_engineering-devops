@@ -16,4 +16,7 @@
 
 8-James_Bond: chomd 007 hello ==> sets NO permissions to the owner, NO permissions to the group, and all the permisions the world.
 
-9-John_Doe: chomd 753 hello ==> sets the mode of the file hello to this format [-rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello]. 
+9-John_Doe: chomd 753 hello ==> sets the mode of the file hello to this format [-rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello].
+
+10-mirror_permissions: chmod --reference=olleh hello ==> sets the mode of the file hello the same as olleh’s mode.
+
