@@ -1,3 +1,5 @@
+# Shell Permission Notes
+
 0-iam_betty: su betty ==> switches the current user to the user (betty).
 
 1-who_am_i: whoami ==> prints the effective username of the current user.
@@ -25,3 +27,5 @@
 12-directory_permissions: mkdir -m 751 my_dir ==> creates a directory (my_dir) with permissions 751 in the working directory. The flag -m means set file mode as in chmod.
 
 13-change_group: chgrp school hello ==> changes the group owner to (school) for the file (hello).
+
+100-change_owner_and_group: chmod vincent:staff * ==> changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
