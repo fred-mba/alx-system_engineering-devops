@@ -10,9 +10,9 @@
 
 4-lastlines: tail -n 10 /etc/passwd ==> Displays the last 10 lines of /etc/passwd file.
 
-5-firstlines:
+5-firstlines: head -n 10 /etc/passwd ==> Displays the last 10 lines of /etc/passwd.
 
-6-third_line:
+6-third_line: head -3 iacta | tail +3 ==> displays the third line of the file iacta.
 
 7-file:
 
