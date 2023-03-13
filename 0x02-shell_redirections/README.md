@@ -1,10 +1,10 @@
 ## Shell_redirections Keynotes
 
-0-hello_world: echo "Hello, World" ==> prints “Hello, World”, followed by a new line to the standard output.
+0-hello_world: echo "Hello, World" ==> Prints “Hello, World”, followed by a new line to the standard output.
 
 1-confused_smiley:
 
-2-hellofile:
+2-hellofile: less /etc/passwd ==> Displays the content of the /etc/passwd file
 
 3-twofiles:
 
