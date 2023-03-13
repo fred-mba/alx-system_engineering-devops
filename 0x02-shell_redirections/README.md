@@ -6,9 +6,9 @@
 
 2-hellofile: less /etc/passwd ==> Displays the content of the /etc/passwd file
 
-3-twofiles:
+3-twofiles: cat /etc/passwd /etc/hosts ==> Displays the content of the duos.
 
-4-lastlines:
+4-lastlines: tail -n 10 /etc/passwd ==> Displays the last 10 lines of /etc/passwd file.
 
 5-firstlines:
 
