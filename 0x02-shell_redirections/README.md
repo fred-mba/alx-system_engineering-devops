@@ -2,7 +2,7 @@
 
 0-hello_world: echo "Hello, World" ==> Prints “Hello, World”, followed by a new line to the standard output.
 
-1-confused_smiley:
+1-confused_smiley: echo "\"(Ôo)'" displays a confused smiley "(Ôo)'. The backslash (\) ==> prevents the next character from being interpreted as a special character.
 
 2-hellofile: less /etc/passwd ==> Displays the content of the /etc/passwd file
 
