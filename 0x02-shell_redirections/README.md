@@ -34,7 +34,7 @@
 
 16-whatsnext: grep -A3 root /etc/passwd ==> displays lines containing "root" pattern and three lines after them. -A1 will print one line after the pattern, A2 will print two lines after the pattern, and likewise for -A3.
 
-17-hidethisword:
+17-hidethisword: grep -v "bin" /etc/passwd ==> Know us "negative matching with grep": prints only lines that don't match the pattern given.
 
 18-letteronly:
 
