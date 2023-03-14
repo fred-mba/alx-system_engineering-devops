@@ -12,9 +12,9 @@
 
 5-local_variables: set ==> The build-in fuction (set) without any option lists all local and global variables and functions.
 
-6-create_local_variable:
+6-create_local_variable: BEST="School" ==> creates a new local variable. Variable are case sensitive and written in uppercase by default. 
 
-7-create_global_variable:
+7-create_global_variable: export BEST="School" ==> creates a new local variable. The variable is tranfered to the parent sub-shell. Any changes made in the child process does not affect the parent shell. 
 
 8-true_knowledge:
 
