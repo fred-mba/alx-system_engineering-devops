@@ -16,7 +16,7 @@
 
 7-create_global_variable: export BEST="School" ==> creates a new local variable. The variable is tranfered to the parent sub-shell. Any changes made in the child process does not affect the parent shell. 
 
-8-true_knowledge:
+8-true_knowledge: echo "$((128 + TRUEKNOWLEDGE))" ==> prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line.
 
 9-divide_and_rule:
 
