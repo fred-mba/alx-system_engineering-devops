@@ -22,7 +22,7 @@
 
 10-love_exponent_breath: echo "$((BREATH**LOVE))" displays the result of BREATH to the power LOVE.
 
-11-binary_to_decimal:
+11-binary_to_decimal: echo "$((2#BINARY)) ==> converts a number stored in BINARY environment from base 2 to base 10. The syntax for conversion is $((base_of_interest#numbertoconvert)) 
 
 12-combinations:
 
