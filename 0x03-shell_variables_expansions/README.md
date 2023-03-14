@@ -18,9 +18,9 @@
 
 8-true_knowledge: echo "$((128 + TRUEKNOWLEDGE))" ==> prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line.
 
-9-divide_and_rule:
+9-divide_and_rule: echo "$((POWER\DIVIDE))" ==> prints the result of POWER divided by DIVIDE, followed by a new line.
 
-10-love_exponent_breath:
+10-love_exponent_breath: echo "$((BREATH**LOVE))" displays the result of BREATH to the power LOVE.
 
 11-binary_to_decimal:
 
