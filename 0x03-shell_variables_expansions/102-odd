@@ -1,2 +1,2 @@
 #!/bin/bash
-echo - - | cut -f1
+cat - - | cut -f1
