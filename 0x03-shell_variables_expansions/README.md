@@ -1,8 +1,8 @@
 ## Shell Variables and Expansions-Keynotes
 
-0-alias: alias ls="rm *" assigns variable ls the rm * command, which can be accessed by typing ls as temporally alternative.
+0-alias: alias ls="rm *" ==> assigns variable ls the rm * command, which can be accessed by typing ls as temporally alternative.
 
-1-hello_you:
+1-hello_you: echo hello "$USER" ==> prints hello user where the user is the current Linux user. echo "hello $USER" will print the same output
 
 2-path:
 
