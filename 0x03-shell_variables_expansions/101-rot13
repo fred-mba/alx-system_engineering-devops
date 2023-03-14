@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "This is my new password." | rot13 fhsjsj Sjhysiy ndjsgkl.
