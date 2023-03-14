@@ -1,2 +1,2 @@
 #!/bin/bash
-rot13 'A-Za-z' 'N-ZA-Mn-Za-m'
+echo "myschool2@email" | rot13 'A-Za-z' 'N-ZA-Mn-Za-m'
