@@ -10,7 +10,7 @@
 
 4-global_variables: printenv ==> lists global(environment) variables.
 
-5-local_variables:
+5-local_variables: set ==> The build-in fuction (set) without any option lists all local and global variables and functions.
 
 6-create_local_variable:
 
