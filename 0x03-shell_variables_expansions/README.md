@@ -24,6 +24,6 @@
 
 11-binary_to_decimal: echo $((2#$BINARY)) ==> converts a number stored in BINARY environment from base 2 to base 10. The syntax for conversion is $((base_of_interest#numbertoconvert)) 
 
-12-combinations:
+12-combinations: echo {a..z}{a..z} | tr ' ' '\n' | grep -v oo ==> is a piped code to print all possible combinations of two letters, in the sorted order from a-z except oo.Without the piped tr, the command returns empty, hence the tr deletes the oo characters and outputs them all on new line.
 
-13-print_float:
+13-print_float: printf "%.2f\n" $NUM prints a number in NUM variable to 2decimal places followed by a new line. Trying echo in place of printf will only output the typed input.
