@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Displays Best School 10 times, but for the 9th iteration,
+#+ displays Best School and then Hi on a new line.
+# must use the while loop and if statement
+
+counter=0
+
+while [ $counter -lt 10 ];
+do
+	if [ $counter -eq 8 ]; then
+		echo -e "Best School\nHi"
+	else
+		echo "Best School"
+	fi
+
+	((counter++))
+done
