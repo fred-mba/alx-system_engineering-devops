@@ -3,10 +3,16 @@
 #+ localhost resolves to 127.0.0.2
 #+ facebook.com resolves to 8.8.8.8
 
-file=~/hosts.new
-cp /etc/hosts $file
+if [ "$id -u" != 0 ]: then
+	echo "Please run this script as root"
+	exit 1
+fi
 
-sed -i -e "$a\\n127.0.0.2\t127.0.0.1" $file
-sed -i -e "$a\\n8.8.8.8\tfacebook.com\n" $file
+# add the /etc/hosts file enntries
+echo "127.0.0.2 localhost" >> /etc/hosts
+echo "8.8.8.8 facebook.com" >> /etc/hosts
 
-cp -f $file /etc/hosts
+# Restart network to apply
+systemct1 restart docker
+
+echo "Connfigaration completed successfully"
