@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Debugging a page to connect to the internet
+
+service apache2 restart 
