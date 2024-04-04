@@ -1,6 +1,13 @@
 # Client configuration with Puppet
 
 exec {'Client configuration':
-  path    => '/usr/bin',
-  command => 'echo -e "Host 100.25.160.40\n	IdentifyFile ~/.ssh/school\n	PasswordAuthentication no" >> /etc/ssh/ssh_config',
+  path  => '/etc/ssh/ssh_config',
+  line  => 'IdentifyFile ~/.ssh/school',
+  match => '^#?(\s*IdentifyFile\s+~/.ssh/school)',
+}
+
+exec {'Configure SSH Client':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'PasswordAuthentication no',
+  match => '^#?(\s*PasswordAuthentication\s+yes)',
 }
