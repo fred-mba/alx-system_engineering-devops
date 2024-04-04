@@ -1,13 +1,11 @@
 # Client configuration with Puppet
 
-file_line {'Client configuration':
+ssh::client::config { 'IdentityFile':
   path  => '/etc/ssh/ssh_config',
-  line  => 'IdentifyFile ~/.ssh/school',
-  match => '^#?(\s*IdentifyFile\s+~/.ssh/school)',
+  value => '~/.ssh/school',
 }
 
-file_line {'Configure SSH Client':
+ssh::client::config { 'PasswordAuthentication':
   path  => '/etc/ssh/ssh_config',
-  line  => 'PasswordAuthentication no',
-  match => '^#?(\s*PasswordAuthentication\s+yes)',
+  value => 'no',
 }
