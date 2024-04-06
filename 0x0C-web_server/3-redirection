@@ -29,6 +29,5 @@ sudo rm -f /etc/nginx/sites-enabled/default
 
 
 sudo service nginx reload
-sudo service restart
 
 echo "Redirection configured successfully."
