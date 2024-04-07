@@ -4,14 +4,15 @@
 
 sudo apt-get update
 sudo apt-get -y install nginx
-path=/var/www/html/xyzfoo.html
-echo "Ceci n'est pas une page" > $path
+
 sudo service nginx start
 
 command="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}"
 sudo sed -i "54i\\$command" /etc/nginx/sites-enabled/default
 
-not_found="\tlocation /xyzfoo {\n\t\treturn 404 \"Ceci n\'est pas une page\n\";\n\t}"
-sudo sed -i "58i\\$not_found" /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html 
+not_found="\n\terror_page 404 \/error_404.html;\n\tlocation \/error_404_page {\n\t  root \/var\/www\/html;\n\t  internal;\n\t}"
+
+sudo sed -i "57i\\$not_found" /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
