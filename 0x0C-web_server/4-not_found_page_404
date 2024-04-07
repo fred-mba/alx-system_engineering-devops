@@ -2,8 +2,15 @@
 # Configure nginx server to have a custom 404 page that contains
 # "Ceci n'est pas une page"
 
+sudo apt-get update
 sudo apt-get -y install nginx
+# echo "Ceci n'est pas une page" | sudo tee /var/www/html/xyzfoo.html
 sudo service nginx start
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error_404.html
-sudo sed -i '38i\error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+
+command="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}"
+sudo sed -i "54i\\$command" /etc/nginx/sites-enabled/default
+
+not_found="\tlocation /xyzfoo {\n\t\treturn 404 \"Ceci n'est pas une page\n\";\n\t}"
+sudo sed -i "58i\\$not_found" /etc/nginx/sites-enabled/default
+
 sudo service nginx restart
