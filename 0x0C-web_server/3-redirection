@@ -2,10 +2,10 @@
 # Install nginx on my web01 server
 # Redirection must be a 301 moved permanently
 
-# sudo apt-get update
-# sudo apt-get -y install nginx
-# echo "Hello World!" | sudo tee /var/www/html/index.html
-# sudo service nginx start
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx start
 
 command="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}"
 sudo sed -i "54i\\$command" /etc/nginx/sites-enabled/default
