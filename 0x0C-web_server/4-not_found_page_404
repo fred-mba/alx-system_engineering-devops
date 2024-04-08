@@ -21,9 +21,8 @@ command="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch
 sudo sed -i "54i\\$command" /etc/nginx/sites-enabled/default
 
 # 404 not found page
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html 
-not_found="\n\terror_page 404 \/error_404.html;\n\tlocation \/error_404_page {\n\t  root \/var\/www\/html;\n\t  internal;\n\t}"
-
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error_404.html
+not_found="\n\terror_page 404 \/error_404.html;\n\tlocation \/error_404_page {\n\t  root \/usr\/share\/nginx\/html;\n\t  internal;\n\t}"
 sudo sed -i "57i\\$not_found" /etc/nginx/sites-enabled/default
 
 # Restart the system
