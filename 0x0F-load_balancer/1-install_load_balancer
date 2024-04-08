@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on lb-01 server
+
+if ! command -v haproxy &> /dev/null
+then
+    # Install haproxy version 2.0.33
+    echo "HAProxy is not installed. Installing..."
+    sudo apt-get update -y
+    sudo apt-get install haproxy -y
+    sudo systemctl start haproxy
+
+    # Ensuring HAProxy can be managed via init
+    sudo systemctl enable haproxy
+
+    # Allowing haproxy on the firewall
+    sudo ufw enable -y
+    sudo ufw allow 80/tcp  # Allow HTTP traffic
+    sudo ufw allow 443/tcp # Allow HTTPS traffic (if applicable)
+    sudo ufw allow ssh # Allow HTTP port 22
+
+else
+    echo "HAProxy is already installed. Skipping installation."
+fi
+
+echo "Configuring HAProxy..."
+# Configure HAproxy so that it send traffic to web-01 and web-02
+proxy="\nfrontend http_front\n\tbind *:80\n\tdefault_backend http_back\n\nbackend http_back\n\tbalance roundrobin\n\tserver 331436-web-01 100.26.235.50:80 check\n\tserver 331436-web-02 54.175.222.182:80 check"
+sudo sed -i "35i\\$proxy" /etc/haproxy/haproxy.cfg mybackup
+
+# Test configuration file of HAProxy and restart if valid
+if sudo haproxy -c -f /etc/haproxy/haproxy.cfg &> /dev/null
+then
+    echo "HAProxy is configuration is valid. Restarting HAProxy now..."
+    sudo service haproxy restart
+else
+    echo "HAProxy is invalid. Skipping restart"
+fi
