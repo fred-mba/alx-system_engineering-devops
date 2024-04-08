@@ -1,10 +1,39 @@
 #!/usr/bin/env bash
-# configures a brand new Ubuntu machine
+# configures a brand new Ubuntu machine with a new Nginx server,
+#+ permanent redirect page, error 404 page and X-Served-By header
 
+# Installing Nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
+
 sudo service nginx start
-myHostName="$(cat /etc/hostname)"
-forChange="http {\n\tadd_header X-Served-By $myHostName;\n"
-sed -i "s/http {/$forChange/" /etc/nginx/nginx.conf
+
+# enabling firewall
+sudo ufw enable
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow ssh
+
+#  Return a page that contains the string
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Redirection 301
+command="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}"
+sudo sed -i "54i\\$command" /etc/nginx/sites-enabled/default
+
+# 404 not found page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html 
+not_found="\n\terror_page 404 \/error_404.html;\n\tlocation \/error_404_page {\n\t  root \/var\/www\/html;\n\t  internal;\n\t}"
+sudo sed -i "57i\\$not_found" /etc/nginx/sites-enabled/default
+
+# Customize web server to configure HTTP response
+add_header="\n\tadd_header X-Served-By $(hostname);"
+sudo sed -i "47i\\$add_header" /etc/nginx/sites-enabled/default
+
+# test nginx configuration
+nginx -t
+
+# Restart the system
+sudo service nginx restart
+
+# Restart the system
 sudo service nginx restart
