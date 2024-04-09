@@ -2,23 +2,21 @@
 
 # Install Nginx package
 package { 'nginx':
-  ensure => 'installed',
+  ensure   => 'installed',
+  provider => 'apt', # Package provider
 }
 
 # Enabling firewall on nginx server
-exec { 'enable_ufw':
-  command => 'sudo ufw enable',
-  path    => '/usr/bin:/usr/sbin:/bin',
+firewall { '100 allow http':
+  port  => 80,
+  proto => 'tcp',
+  action > 'accept',
 }
 
-exec { 'allow_nginx_http':
-  command => 'sudo ufw allow "Nginx HTTP"',
-  path    => '/usr/bin:/usr/sbin:/bin',
-}
-
-exec { 'allow_ssh':
-  command => 'sudo ufw allow ssh',
-  path    => '/usr/bin:/usr/sbin:/bin',
+firewall { '100 allow ssh':
+  port   => 22.
+  proto  => 'tcp',
+  action => enable
 }
 
 # After installation, add a query page that contains 'Hello World!'
@@ -30,7 +28,8 @@ file { '/var/www/html/index.html':
 # Redirection 301 moved permanently
 file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
-  content => "server {
+  content => "
+  server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
@@ -44,6 +43,7 @@ file { '/etc/nginx/sites-enabled/default':
             internal;
     }
   }",
+  notify  => Service['nginx']
 }
 
 # 404 query message
@@ -54,15 +54,7 @@ file { '/usr/share/nginx/html/error_404.html':
 
 # Restart Nginx service
 service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  require   => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
-  subscribe => File['/etc/nginx/sites-enabled/default'],
-}
-
-# Execute the restart command
-exec { 'service nginx restart':
-  command     => 'service nginx restart',
-  path        => '/usr/bin:/usr/sbin:/bin',
-  refreshonly => true,
+  ensure  => running,
+  enable  => true,
+  require => Package['nginx'],
 }
