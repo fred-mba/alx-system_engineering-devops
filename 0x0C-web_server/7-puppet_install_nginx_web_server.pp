@@ -30,6 +30,5 @@ file {'/etc/nginx/sites-enabled/default':
 # Restart Nginx service
 service {'nginx':
   ensure  => running,
-  enable  => true,
   require => Package['nginx'],
 }
