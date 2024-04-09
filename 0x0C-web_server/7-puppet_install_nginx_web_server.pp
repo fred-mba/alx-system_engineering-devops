@@ -25,10 +25,12 @@ file {'/etc/nginx/sites-enabled/default':
       return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
   }",
+notify    => Exec['nginx_restart'],
 }
 
 # Restart Nginx service
-service {'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+exec { 'nginx_restart':
+  command     => 'service nginx restart',
+  path        => '/usr/sbin:/usr/bin:/sbin:/bin',
+  refreshonly => true,
 }
