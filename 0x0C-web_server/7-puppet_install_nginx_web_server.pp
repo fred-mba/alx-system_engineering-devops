@@ -38,9 +38,9 @@ file { '/etc/nginx/sites-enabled/default':
     }
 
     error_page 404 /error_404.html;
-        location = /error_404.html {
-            root /usr/share/nginx/html;
-            internal;
+      location = /error_404.html {
+          root /usr/share/nginx/html;
+          internal;
     }
   }",
   notify  => Service['nginx']
