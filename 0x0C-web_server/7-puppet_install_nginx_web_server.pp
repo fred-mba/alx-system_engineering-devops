@@ -7,11 +7,11 @@ package { 'nginx':
 }
 
 # Enabling firewall on nginx server
-firewall { '100 allow http':
-  port  => 80,
-  proto => 'tcp',
-  action > 'accept',
-}
+# firewall { '100 allow http':
+  # port  => 80,
+  # proto => 'tcp',
+  # action > 'accept',
+# }
 
 firewall { '100 allow ssh':
   port   => 22.
@@ -37,19 +37,8 @@ file { '/etc/nginx/sites-enabled/default':
       return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
-    error_page 404 /error_404.html;
-      location = /error_404.html {
-          root /usr/share/nginx/html;
-          internal;
-    }
   }",
   notify  => Service['nginx'],
-}
-
-# 404 query message
-file { '/usr/share/nginx/html/error_404.html':
-  ensure  => present,
-  content => "Ceci n'est pas une page",
 }
 
 # Restart Nginx service
