@@ -1,36 +1,48 @@
 # Puppet file to manage Nginx installation and configurations
 
-# Install Nginx package
-package {'nginx':
-  ensure => 'installed',
+# Update system
+exec { 'update_system':
+  command => '/usr/bin/apt-get update',
+}
+
+# Install Nginx
+package { 'nginx':
+  ensure  => 'installed',
+  require => Exec['update_system'],
 }
 
 # After installation, add a query page that contains 'Hello World!'
-file {'/var/www/html/index.html':
+file { '/var/www/html/index.html':
   ensure  => present,
   content => 'Hello World!',
 }
 
-# Redirection 301 moved permanently
+# Configure Nginx to return "301 Moved Permanently"
 file { '/etc/nginx/sites-available/default':
-  ensure   => present,
-  content  => "
-    server {
-		listen 80;
-		listen [::]:80;
-		
-		location /redirect_me {
-			return 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';
-		}
-	}
+  ensure  => present,
+  content => "
+  server {
+    listen 80;
+    listen [::]:80;
+
+    location /redirect_me {
+      return 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';
+    }
+  }
   ",
-    notify => Exec['nginx_restart'],
 }
 
-# Ensure the system is enabled and running after configuration
+# Link to the default NGINX site configuration file to ensure default site is enabled.
+file { '/etc/nginx/sites-enabled/default':
+  ensure  => link,
+  target  => '/etc/nginx/sites-available/default',
+  require => File['/etc/nginx/sites-available/default'],
+}
+
+# Restart the Nginx after configarations
 service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => Package['nginx'],
-  notify  => File['/etc/nginx/sites-enabled/default'],
+  ensure    => running,
+  enable    => true,
+  require   => Package['nginx'],
+  subscribe => [File['/etc/nginx/sites-available/default'], File['/etc/nginx/sites-enabled/default']],
 }
