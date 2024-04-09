@@ -3,6 +3,7 @@
 # Install Nginx package
 package {'nginx':
   ensure   => 'installed',
+  provider => 'apt', # Package provider
 }
 
 # After installation, add a query page that contains 'Hello World!'
@@ -13,6 +14,7 @@ file {'/var/www/html/index.html':
 
 # Redirection 301 moved permanently
 file {'/etc/nginx/sites-enabled/default':
+  ensure  => present,
   content => "server {
     listen 80 default_server;
     listen [::]:80 default_server;
