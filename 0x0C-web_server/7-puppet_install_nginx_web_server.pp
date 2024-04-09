@@ -18,13 +18,24 @@ file { '/var/www/html/index.html':
 }
 
 # Configure Nginx to return "301 Moved Permanently"
-file_line { '/etc/nginx/sites-available/default':
-  ensure => present,
-  after  => 'listen 80 default_server;',
-  line   => '\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}',
+file { '/etc/nginx/sites-available/default':
+  ensure  => present,
+  content => "
+  server {
+    listen 80 default_server;
+    server_name _;
+
+    location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+  }
+  ",
+  require => Package['nginx'],
+  notify  => Service['nginx'],
 }
 
-# Restart the Nginx after configarations
+# Restart the Nginx after configurations
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
