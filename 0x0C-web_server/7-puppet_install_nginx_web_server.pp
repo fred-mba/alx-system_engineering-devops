@@ -3,7 +3,6 @@
 # Install Nginx package
 package {'nginx':
   ensure   => 'installed',
-  provider => 'apt', # Package provider
 }
 
 # After installation, add a query page that contains 'Hello World!'
