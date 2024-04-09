@@ -12,9 +12,8 @@ package { 'nginx':
 }
 
 # After installation, add a query page that contains 'Hello World!'
-file { 'html_file':
+file { '/var/www/html/index.html':
   ensure  => present,
-  path    => '/var/www/html/index.html',
   content => 'Hello World!',
 }
 
