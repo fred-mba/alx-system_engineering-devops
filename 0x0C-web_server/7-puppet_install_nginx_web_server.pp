@@ -1,6 +1,8 @@
 # Puppet file to manage Nginx installation and configurations
-
+# require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
+#notify  => File['/etc/nginx/sites-enabled/default'],
 # Install Nginx package
+
 package {'nginx':
   ensure => 'installed',
 }
@@ -27,8 +29,6 @@ file {'/etc/nginx/sites-enabled/default':
 
 # Restart Nginx service
 service {'nginx':
-  ensure  => running,
-  enable  => true,
-  require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
-  notify  => File['/etc/nginx/sites-enabled/default'],
+  ensure => running,
+  enable => true,
 }
