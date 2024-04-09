@@ -28,7 +28,8 @@ file {'/etc/nginx/sites-enabled/default':
   ",
 }
 
-exec {'service nginx restart':
-  path        => '/usr/sbin:/usr/bin:/sbin:/bin',
-  refreshonly => true,
+service { 'nginx':
+  ensure  => running,
+  enable  => true,
+  require => Package['nginx'],
 }
