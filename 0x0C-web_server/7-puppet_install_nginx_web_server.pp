@@ -43,7 +43,7 @@ file { '/etc/nginx/sites-enabled/default':
           internal;
     }
   }",
-  notify  => Service['nginx']
+  notify  => Service['nginx'],
 }
 
 # 404 query message
