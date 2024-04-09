@@ -33,7 +33,6 @@ file { 'configaration_file':
 
   }
   ",
-  require => Package['nginx'],
   notify  => Service['nginx'],
 }
 
