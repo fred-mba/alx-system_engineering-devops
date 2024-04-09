@@ -13,34 +13,19 @@ package { 'nginx':
 
 # After installation, add a query page that contains 'Hello World!'
 file { '/var/www/html/index.html':
+  ensure  => present,
   content => 'Hello World!',
 }
 
 # Configure Nginx to return "301 Moved Permanently"
-file { '/etc/nginx/sites-available/default':
-  content => "
-  server {
-    listen 80;
-    listen [::]:80;
-
-    location /redirect_me {
-      return 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';
-    }
-  }
-  ",
-}
-
-# Link to the default NGINX site configuration file to ensure default site is enabled.
-file { '/etc/nginx/sites-enabled/default':
-  ensure  => link,
-  target  => '/etc/nginx/sites-available/default',
-  require => File['/etc/nginx/sites-available/default'],
+file_line { '/etc/nginx/sites-available/default':
+  ensure => present,
+  after  => 'listen 80 default_server;',
+  line   => '\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?vQH2-TGUlwu4;\n\t}',
 }
 
 # Restart the Nginx after configarations
 service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  require   => Package['nginx'],
-  subscribe => [File['/etc/nginx/sites-available/default'], File['/etc/nginx/sites-enabled/default']],
+  ensure  => running,
+  require => Package['nginx'],
 }
