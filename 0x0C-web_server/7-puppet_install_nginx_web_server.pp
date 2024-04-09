@@ -15,6 +15,7 @@ file {'/var/www/html/index.html':
 
 # Redirection 301 moved permanently
 file {'/etc/nginx/sites-enabled/default':
+  ensure  => present,
   content => "
 	server {
 		listen 80 default_server;
