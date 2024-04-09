@@ -19,21 +19,9 @@ file { 'html_file':
 }
 
 # Configure Nginx to return "301 Moved Permanently"
-file { 'configaration_file':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  content => "
-  server {
-    listen 80 default_server;
-    server_name _;
-
-    location /redirect_me {
-      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-  }
-  ",
-  notify  => Service['nginx'],
+exec {'redirect_me':
+  command  => 'sed -i "24i\     rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
 # Restart the Nginx after configurations
