@@ -13,20 +13,10 @@ file {'/var/www/html/index.html':
 }
 
 # Redirection 301 moved permanently
-file {'/etc/nginx/sites-enabled/default':
-  ensure  => present,
-  content => "
-	server {
-		listen 80 default_server;
-		listen [::]:80 default_server;
-
-		location /redirect_me {
-			return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    		}
-  	}
-  ",
+exec {'redirect_me':
+  command  => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
-
 # Ensure the system is enabled and running after configuration
 service { 'nginx':
   ensure  => running,
