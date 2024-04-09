@@ -1,18 +1,18 @@
 # Puppet file to manage Nginx installation and configurations
 
 # Install Nginx package
-package {'nginx':
-  ensure   => 'installed',
+package { 'nginx':
+  ensure => 'installed',
 }
 
 # After installation, add a query page that contains 'Hello World!'
-file {'/var/www/html/index.html':
+file { '/var/www/html/index.html':
   ensure  => present,
   content => 'Hello World!',
 }
 
 # Redirection 301 moved permanently
-file {'/etc/nginx/sites-enabled/default':
+file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
   content => "
   server {
@@ -22,7 +22,6 @@ file {'/etc/nginx/sites-enabled/default':
     location /redirect_me {
       return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
-
   }",
 }
 
@@ -30,5 +29,6 @@ file {'/etc/nginx/sites-enabled/default':
 service { 'nginx':
   ensure  => running,
   enable  => true,
-  require => Package['nginx'],
+  require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
+  notify  => File['/etc/nginx/sites-enabled/default'],
 }
