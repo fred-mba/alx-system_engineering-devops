@@ -17,15 +17,16 @@ file {'/var/www/html/index.html':
 file {'/etc/nginx/sites-enabled/default':
   ensure  => present,
   content => "
-  server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+	server {
+		listen 80 default_server;
+		listen [::]:80 default_server;
 
-    location /redirect_me {
-      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-  }",
-notify    => Exec['nginx_restart'],
+		location /redirect_me {
+			return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    		}
+  	}
+  ",
+  notify  => Exec['nginx_restart'],
 }
 
 service { 'nginx':
