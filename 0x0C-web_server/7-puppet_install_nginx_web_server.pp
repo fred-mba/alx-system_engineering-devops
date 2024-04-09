@@ -28,6 +28,13 @@ file {'/etc/nginx/sites-enabled/default':
   notify  => Exec['nginx_restart'],
 }
 
+# Enable the default site
+file { '/etc/nginx/sites-enabled/default':
+  ensure  => link,
+  target  => '/etc/nginx/sites-available/default',
+  require => File['/etc/nginx/sites-available/default'],
+}
+
 service { 'nginx':
   ensure  => running,
   enable  => true,
