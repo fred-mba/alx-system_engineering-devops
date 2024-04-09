@@ -20,7 +20,7 @@ file { 'html_file':
 
 # Configure Nginx to return "301 Moved Permanently"
 exec {'redirect_me':
-  command  => 'sed -i "24i\     rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
+  command  => 'sed -i "24i\    rewrite ^/redirect_me https://www.youtube.com/watch?vQH2-TGUlwu4/ permanent;" /etc/nginx/sites-available/default',
   provider => 'shell'
 }
 
