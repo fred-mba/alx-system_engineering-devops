@@ -13,13 +13,11 @@ package { 'nginx':
 
 # After installation, add a query page that contains 'Hello World!'
 file { '/var/www/html/index.html':
-  ensure  => present,
   content => 'Hello World!',
 }
 
 # Configure Nginx to return "301 Moved Permanently"
 file { '/etc/nginx/sites-available/default':
-  ensure  => present,
   content => "
   server {
     listen 80;
