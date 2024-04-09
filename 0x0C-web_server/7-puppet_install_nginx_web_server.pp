@@ -17,10 +17,10 @@ file { '/etc/nginx/sites-available/default':
   ensure   => present,
   content  => "
     server {
-	    listen 80;
+		listen 80;
 		listen [::]:80;
 		
-		server_name 100.26.235.50;
+		server_name _;
 
 		root /var/www/html;
 		index index.html index.htm index.nginx-debian.html;
