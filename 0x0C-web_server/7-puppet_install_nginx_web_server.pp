@@ -1,5 +1,4 @@
 # Puppet file to manage Nginx installation and configurations
-# require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
 
 # Install Nginx package
 package {'nginx':
@@ -20,11 +19,6 @@ file { '/etc/nginx/sites-available/default':
 		listen 80;
 		listen [::]:80;
 		
-		server_name _;
-
-		root /var/www/html;
-		index index.html index.htm index.nginx-debian.html;
-
 		location /redirect_me {
 			return 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';
 		}
@@ -32,6 +26,7 @@ file { '/etc/nginx/sites-available/default':
   ",
     notify => Exec['nginx_restart'],
 }
+
 # Ensure the system is enabled and running after configuration
 service { 'nginx':
   ensure  => running,
