@@ -1,73 +1,35 @@
-# Puppet file to manage Nginx installation and configurations
+# Puppet file to manage Nginx installation and configuration
 
-# Install Nginx package
+# Update system
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
+}
+
+# Install nginx
 package { 'nginx':
-  ensure => 'installed',
+  ensure  => 'installed',
+  require => Exec['update system']
 }
-
-# Creating my firewall class module
-class mymodule::firewall {
-  exec { 'enable_ufw':
-    command => 'sudo ufw enable',
-    path    => '/usr/bin:/usr/sbin:/bin',
-  }
-
-  exec { 'allow_nginx_http':
-    command => 'sudo ufw allow "Nginx HTTP"',
-    path    => '/usr/bin:/usr/sbin:/bin',
-  }
-
-  exec { 'allow_ssh':
-    command => 'sudo ufw allow ssh',
-    path    => '/usr/bin:/usr/sbin:/bin',
-  }
-}
-
-# Enable firewall
-include mymodule::firewall
 
 # After installation, add a query page that contains 'Hello World!'
-file { '/var/www/html/index.html':
-  ensure  => present,
-  content => 'Hello World!',
+file {'/var/www/html/index.html':
+  content => 'Hello World!'
 }
 
-# Redirection 301 moved permanently
-file { '/etc/nginx/sites-enabled/default':
-  ensure => present,
-  content => "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    location /redirect_me {
-      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    error_page 404 /error_404.html;
-        location = /error_404.html {
-            root /usr/share/nginx/html;
-            internal;
-    }
-  }",
+# Configure Nginx to return "301 Moved Permanently" 
+exec {'redirect_me':
+  command  => 'sed -i "24i\	rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
-# 404 query message
-file { '/usr/share/nginx/html/error_404.html':
-  ensure  => present,
-  content => "Ceci n'est pas une page",
+# Add a custom HTTP header
+exec {'HTTP header':
+  command  => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
-# Restart Nginx service
-service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  require   => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],  
-  subscribe => File['/etc/nginx/sites-enabled/default'],
-}
-
-# Execute the restart command
-exec { 'service nginx restart':
-  command     => 'service nginx restart',
-  path    => '/usr/bin:/usr/sbin:/bin',
-  refreshonly => true,
+# Restart Nginx server
+service {'nginx':
+  ensure  => running,
+  require => Package['nginx']
 }
