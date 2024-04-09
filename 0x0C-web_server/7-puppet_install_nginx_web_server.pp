@@ -31,6 +31,6 @@ file {'/etc/nginx/sites-enabled/default':
 service { 'nginx':
   ensure  => running,
   enable  => true,
-  require => [Package['nginx'], File['/etc/nginx/sites-enabled/default']],
+  require => Package['nginx'],
   notify  => File['/etc/nginx/sites-enabled/default'],
 }
