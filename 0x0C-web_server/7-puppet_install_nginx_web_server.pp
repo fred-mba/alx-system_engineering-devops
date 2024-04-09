@@ -13,9 +13,24 @@ file {'/var/www/html/index.html':
 }
 
 # Redirection 301 moved permanently
-exec {'redirect_me':
-  command  => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
-  provider => 'shell'
+file { '/etc/nginx/sites-available/default':
+  ensure   => present,
+  content  => "
+    server {
+	    listen 80;
+		listen [::]:80;
+		
+		server_name 100.26.235.50;
+
+		root /var/www/html;
+		index index.html index.htm index.nginx-debian.html;
+
+		location /redirect_me {
+			return 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';
+		}
+	}
+  ",
+    notify => Exec['nginx_restart'],
 }
 # Ensure the system is enabled and running after configuration
 service { 'nginx':
