@@ -38,7 +38,6 @@ file { '/etc/nginx/sites-enabled/default':
     }
 
   }",
-  notify  => Service['nginx'],
 }
 
 # Restart Nginx service
