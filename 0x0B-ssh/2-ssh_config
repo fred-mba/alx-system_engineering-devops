@@ -2,7 +2,7 @@
 # SSH client configuration must be configured to use the private key ~/.ssh/school
 # SSH client configuration must be configured to refuse to authenticate using a password
 
-Host 100.26.235.50
+Host  54.173.135.49
 	IdetifyFile ~/.ssh/school
 	PreferredAuthentications publickey
 	PasswordAuthetication no
