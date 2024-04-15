@@ -3,6 +3,6 @@
 apt update
 apt-get install ufw -y 
 ufw enable -y
-ufw allow 80/tcp # Allow default HTTP
+ufw allow http # Allow default HTTP
 ufw allow 443/tcp # Allow HTTPS SSL
 ufw allow ssh # Allow port 22
