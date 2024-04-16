@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Accepts one argument and prints out the user
+# Check if the script has been provided with exactly one argument
+if [ "$#" -ne 1 ];
+then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+username="$1"
+
+if ! id "$username" &>/dev/null;
+then
+    echo "User: '$username' does not exist."
+    exit 1
+fi
+sudo -u "$username" whoami
