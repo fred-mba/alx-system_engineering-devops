@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-# Accepts one argument and prints out the user
-# Check if the script has been provided with exactly one argument
+# Runs sudo command under the user passed as an argument
+username="$1"
+
 if [ "$#" -ne 1 ];
 then
     echo "Usage: $0 <username>"
     exit 1
-fi
 
-username="$1"
-
-if ! id "$username" &>/dev/null;
+elif ! id "$username" &>/dev/null;
 then
     echo "User: '$username' does not exist."
     exit 1
+else
+    sudo -u "$username" whoami
 fi
-sudo -u "$username" whoami
