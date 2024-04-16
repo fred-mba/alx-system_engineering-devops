@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# nginx must be running as nginx user
+# nginx must be listening on all active IPs on port 8080
+# cannot use apt-get remove
+
+adduser --system --no-create-home --disable-login --group nginx
+sed -i 's/listen\s*\(.*\);/listen 8080;/' /etc/nginx/conf.d/default.conf
+
+service nginx restart
