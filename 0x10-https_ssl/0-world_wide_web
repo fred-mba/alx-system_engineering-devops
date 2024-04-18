@@ -1,0 +1,24 @@
+#!/bin/bash
+# This script accepts 2 arguments:
+#	1. domain
+#	    * type: string
+#	    * what: domain name to audit
+#           * mandatory: yes
+#	2. subdomain
+#	    * type: string
+#	    * what: specific subdomain to audit
+#	    * mandatory: no
+# Output The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+
+if [ $# -eq 1 ]; then
+    domain=$1
+    sub_domain=("www" "lib-01" "web-01" "web-02")
+fi
+
+for subs in "${sub_domain[@]}"
+do
+    destination=$(dig +short "$subs.$domain")
+    record_type=$(dig "$subs.$domain" | awk '/^;; ANSWER SECTION:$/ { getline; print $4 }')
+
+    echo "The subdomain $subs is a $record_type record and points to $destination"
+done
