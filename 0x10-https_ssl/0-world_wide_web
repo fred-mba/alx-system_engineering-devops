@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script accepts 2 arguments:
 #	1. domain
 #	    * type: string
