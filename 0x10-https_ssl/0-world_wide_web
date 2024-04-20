@@ -10,15 +10,22 @@
 #	    * mandatory: no
 # Output The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
 
-if [ $# -eq 1 ]; then
-    domain=$1
-    sub_domain=("www" "lib-01" "web-01" "web-02")
+audit_domain_func () {
+if [ -z "$2" ]; then
+    local sub_domains=("www" "lb-01" "web-01" "web-02")
+    local domain="$1"
 fi
 
-for subs in "${sub_domain[@]}"
+for sub in "${sub_domains[@]}" 
 do
-    destination=$(dig +short "$subs.$domain")
-    record_type=$(dig "$subs.$domain" | awk '/^;; ANSWER SECTION:$/ { getline; print $4 }')
+    record_type=$(dig "$sub"."$domain" | awk '/ANSWER SECTION:/ {getline; print $4}')
+    destination=$(dig "$sub"."$domain" | awk '/ANSWER SECTION:/ {getline; print $5}')
 
-    echo "The subdomain $subs is a $record_type record and points to $destination"
+    echo "The subdomain $sub is a $record_type record and points to $destination"
 done
+}
+
+sub_domains=("www" "lb-01" "web-01" "web-02")
+domain="$1"
+
+audit_domain_func sub_domains domain
