@@ -1,0 +1,12 @@
+# Enforce HTTPS traffic so that no unencrypted traffic is possible
+frontend http-request
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs
+        http-request set-header X-Forwarded-Proto https if { ssl_fc }
+        http-request redirect scheme https code 301 unless { ssl_fc }
+        default_backend web_servers
+
+backend web_servers
+        balance roundrobin
+        server 331436-web-01 100.26.213.40:80 check
+        server 331436-web-02 54.88.199.7:80 check
