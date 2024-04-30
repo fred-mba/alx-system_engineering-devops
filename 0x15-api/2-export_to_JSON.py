@@ -31,6 +31,7 @@ def export_to_json(user_id):
     with open(filename, 'w') as jsonfile:
         json.dump(json_data, jsonfile)
 
+
 if __name__ == "__main__":
     user_id = sys.argv[1]
     export_to_json(user_id)
