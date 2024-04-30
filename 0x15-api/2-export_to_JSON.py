@@ -23,14 +23,13 @@ def export_to_json(user_id):
 
     for data in todos_data:
         json_data[user_id].append({
-            "task": data['title '],
+            "task": data['title'],
             "completed": data['completed'],
             "username": user_info['username']
         })
 
     with open(filename, 'w') as jsonfile:
         json.dump(json_data, jsonfile)
-
 
 if __name__ == "__main__":
     user_id = sys.argv[1]
