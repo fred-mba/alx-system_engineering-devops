@@ -17,8 +17,8 @@ def fetch_todos(employee_id):
 
     EMPLOYEE_NAME = employee_info['name']
 
-    employee_todos = f"{employee_url}/todos"
-    todos_info = requests.get(employee_todos).json()
+    todos_url = f"{employee_url}/todos"
+    todos_info = requests.get(todos_url).json()
     TOTAL_NUMBER_OF_TASKS = len(todos_info)
 
     completed_tasks = [task for task in todos_info if task['completed']]
@@ -27,7 +27,7 @@ def fetch_todos(employee_id):
         f"Employee {EMPLOYEE_NAME} is done with tasks({NUMBER_OF_DONE_TASKS}\
 /{TOTAL_NUMBER_OF_TASKS}):")
     for task in completed_tasks:
-        print(f"\t{task['title']}")
+        print(f"\t {task['title']}")
 
 
 if __name__ == "__main__":
