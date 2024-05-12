@@ -6,7 +6,7 @@
 - **Impact:** Unauthorized access to multiple user accounts, potential data leakage
 
 ### Issue Summary
-At 8:21 AM, our security monitoring system detected multiple failed login attempts originating from various IP addresses. Investigations revealed that these attempts were part of dictionary attack targeting our authentication systems. Despite our system’s limiting measures, the attacker utilized users’ logins to access their accounts. The root cause of this breach was weak passwords and lack of multi-factor authentication access into users’ accounts.
+On the fateful day of May 12, 2024, at 8:21 AM, our security monitoring system detected multiple failed login attempts originating from various IP addresses. Investigations revealed that these attempts were part of dictionary attack targeting our authentication systems. Despite our system’s limiting measures, the attacker utilized users’ logins to access their accounts. The root cause of this breach was weak passwords and lack of multi-factor authentication access into users’ accounts.
 
 **Timeline (all times Greenwich Meridian Time)**
 *	8:26 AM: Incident detected
@@ -23,6 +23,7 @@ At 8:18, monitors registered multiple login attempts from different IP addresses
 ### Resolution and Recovery
 Security team responded within 10 minutes of initial detection. At 8:41 AM, the response team tried to block Ip addresses associated with the attack with no success. This forced the team to reset passwords for compromised accounts and enforce stronger password policies. At this time frame, affected users were informed to be patient as servers were under maintenance.
 
+![Resolution](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cartertoons.com%2Fproduct%2Fblister-pack-data-security%2F&psig=AOvVaw3HHq8-DGnxB-YYBIiz_KqM&ust=1715615893485000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIj65OS-iIYDFQAAAAAdAAAAABAE)
 The team implemented rate limiting mechanisms to prevent brute force, ARP sniffing and dictionary attacks. In addition, enhanced monitoring and alerting measures for abnormal login patterns in earlier stages were adopted. 
 Corrective and Preventive measures
 Two days after the incident, we conducted an internal analysis to review areas for improvement, recommendations and preventive measures.
