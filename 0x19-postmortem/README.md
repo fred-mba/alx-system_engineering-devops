@@ -26,6 +26,7 @@ Security team responded within 10 minutes of initial detection. At 8:41 AM, the 
 The team implemented rate limiting mechanisms to prevent brute force, ARP sniffing and dictionary attacks. In addition, enhanced monitoring and alerting measures for abnormal login patterns in earlier stages were adopted. 
 Corrective and Preventive measures
 Two days after the incident, we conducted an internal analysis to review areas for improvement, recommendations and preventive measures.
+
 **Areas of Improvement**
 *	Proactive enforcement of strong password policies
 *	Implementation of multi-factor verification for added layer of security.
