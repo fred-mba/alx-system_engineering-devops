@@ -36,6 +36,5 @@ Two days after the incident, we conducted an internal analysis to review areas f
 *	Conduct regular awareness training for users on creating strong passwords
 *	Creating and implementing automatic tools detecting and blocking cyberattacks
 
-![solved](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FFreedomFireCommunications%2Fphotos%2Fa.611580949231120%2F1280532605669281%2F%3Ftype%3D3&psig=AOvVaw3HHq8-DGnxB-YYBIiz_KqM&ust=1715615893485000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIj65OS-iIYDFQAAAAAdAAAAABAW)
-
+![solved](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-KrIWAJInjI_wWFK1yH210Z91YKA9T1OBBTLFWsSyDxfWvFNSAi_obe30dCfIJ-k2Xnc&usqp=CAU)
 We are committed to respond and protect our customers against cyberattacks. We acknowledge the efforts of the security team in responding promptly to this cybersecurity attack and implementing measures to prevent similar incidents in future. We appreciate your patience during server downtimes and apologize for the inconveniences.
