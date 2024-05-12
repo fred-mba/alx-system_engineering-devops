@@ -37,5 +37,4 @@ Two days after the incident, we conducted an internal analysis to review areas f
 *	Conduct regular awareness training for users on creating strong passwords
 *	Creating and implementing automatic tools detecting and blocking cyberattacks
 
-![solved](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-KrIWAJInjI_wWFK1yH210Z91YKA9T1OBBTLFWsSyDxfWvFNSAi_obe30dCfIJ-k2Xnc&usqp=CAU)
 We are committed to respond and protect our customers against cyberattacks. We acknowledge the efforts of the security team in responding promptly to this cybersecurity attack and implementing measures to prevent similar incidents in future. We appreciate your patience during server downtimes and apologize for the inconveniences.
