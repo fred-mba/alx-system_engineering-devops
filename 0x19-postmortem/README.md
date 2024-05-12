@@ -23,7 +23,8 @@ At 8:18, monitors registered multiple login attempts from different IP addresses
 ### Resolution and Recovery
 Security team responded within 10 minutes of initial detection. At 8:41 AM, the response team tried to block Ip addresses associated with the attack with no success. This forced the team to reset passwords for compromised accounts and enforce stronger password policies. At this time frame, affected users were informed to be patient as servers were under maintenance.
 
-![Resolution](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cartertoons.com%2Fproduct%2Fblister-pack-data-security%2F&psig=AOvVaw3HHq8-DGnxB-YYBIiz_KqM&ust=1715615893485000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIj65OS-iIYDFQAAAAAdAAAAABAE)
+![Resolution](https://www.cartertoons.com/wp-content/uploads/2021/02/Blister-Pack-Data.jpg)
+
 The team implemented rate limiting mechanisms to prevent brute force, ARP sniffing and dictionary attacks. In addition, enhanced monitoring and alerting measures for abnormal login patterns in earlier stages were adopted. 
 Corrective and Preventive measures
 Two days after the incident, we conducted an internal analysis to review areas for improvement, recommendations and preventive measures.
