@@ -8,12 +8,14 @@ import requests
 
 def top_ten(subreddit):
     api_url = 'https://www.reddit.com/r/'
-    subreddit_url = f"{api_url}{subreddit}/hot.json?limit=10"
+    subreddit_url = f"{api_url}{subreddit}/hot.json"
 
     headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"}
 
+    params = {"limit": 10}
+
     response = requests.get(
-        subreddit_url, headers=headers, allow_redirects=False)
+        subreddit_url, headers=headers, params=params, allow_redirects=False)
 
     if response.status_code == 200:
 
