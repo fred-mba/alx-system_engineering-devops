@@ -9,7 +9,6 @@
 - [API pagination](https://www.youtube.com/watch?v=4Fdyft-ky0w)
 
 ### Alx Resources
-- [Reddit API Documentation](https://www.reddit.com/dev/api/)
 - [Query String](https://en.wikipedia.org/wiki/Query_string)
 
 ### Additional resourses
