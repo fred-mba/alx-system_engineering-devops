@@ -1,24 +1,17 @@
 #!/usr/bin/python3
 """
-This module sends a get request to Reddit API to retrieve number of subscribers
+Script that queries subscribers on a given Reddit subreddit.
 """
+
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """"
-    Function that queries the Reddit API and returns the number of subscribers
-    """
-    api_url = 'https://www.reddit.com/r/'
-    subreddit_url = f"{api_url}{subreddit}/about.json"
-
+    """Return the total number of subscribers on a given subreddit."""
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "Mozilla/5.0"}
-
-    response = requests.get(
-        subreddit_url, headers=headers, allow_redirects=False)
-
+    response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
-
         data = response.json()
         subscribers = data['data']['subscribers']
         return subscribers
