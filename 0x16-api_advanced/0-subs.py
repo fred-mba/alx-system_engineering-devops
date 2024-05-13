@@ -2,10 +2,15 @@
 """
 This module sends a get request to Reddit API to retrieve number of subscribers
 """
+
+
 import requests
 
 
 def number_of_subscribers(subreddit):
+    """"
+    Function that queries the Reddit API and returns the number of subscribers
+    """
     api_url = 'https://www.reddit.com/r/'
     subreddit_url = f"{api_url}{subreddit}/about.json"
 
